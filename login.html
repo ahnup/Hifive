@@ -21,7 +21,18 @@
         <header class="header">
             <form>
                 PIN번호 입력<br>
-                <input type="text" placeholder="번호를 입력해주세요" name="pinNum" id="number">
+                <input type="text" value="" placeholder="번호를 입력해주세요" name="pinNum" id="number"><br>
+                <input type="button" value="1" onclick="NumberKeyDown(1)">
+                <input type="button" value="2" onclick="NumberKeyDown(2)">
+                <input type="button" value="3" onclick="NumberKeyDown(3)">
+                <input type="button" value="4" onclick="NumberKeyDown(4)">
+                <input type="button" value="5" onclick="NumberKeyDown(5)">
+                <input type="button" value="6" onclick="NumberKeyDown(6)">
+                <input type="button" value="7" onclick="NumberKeyDown(7)">
+                <input type="button" value="8" onclick="NumberKeyDown(8)">
+                <input type="button" value="9" onclick="NumberKeyDown(9)">
+                <input type="button" value="0" onclick="NumberKeyDown(0)">
+                <input type="button" value="back" onclick="BackKeyDown()">
                 <input type="button" value="Enter" onclick="EnterKeyDown()"><br>
                 <label id="text" style="font-size: small;">!회원이 아니시라면 회원가입을 진행해주세요</label>
             </form>
@@ -53,7 +64,17 @@
                     txt.innerHTML = "비밀번호가 올바르지 않습니다.";
                 }
             }
+            function BackKeyDown(){
+                number.value = number.value.substring(0, number.value.length-1)
+            }
+            function NumberKeyDown(num){
+                number.value = number.value+num;
+            }
         </script>
+       
+        
+        
+        
       
     </body>
 </html>
