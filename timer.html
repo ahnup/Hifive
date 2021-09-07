@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Timer</title>
+        <style>
+            body{
+                background-color: black;
+                margin:0 auto;
+            }
+            .timer{
+                font-size: 100px;
+                color : white;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        </style>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	</head>
+	<body>
+		<h1>
+			timer
+		</h1>
+		<div class="timer" id="timer">
+			<div><h4> </h4></div>
+		</div>
+        <script type="text/javascript">
+            const Timer = document.querySelector(".timer");
+            var sec=localStorage.getItem('second');
+            var breaktime = false; var t;
+            if (sec == '30'){
+                t = 30;
+            }
+            else if(sec == '60'){
+                t = 60;
+            }
+            else if(sec == '90'){
+                t = 90;
+            }
+            else if(sec == '120'){
+                t = 120;
+            }
+            function timer(){
+                // 0.01(10ms)초마다 t 값을 0.01 증가시키고
+                // 증가된 t 값을 timer 클래스 하위 html에 출력
+                setInterval(function(){
+                    t-=1;
+                    Timer.innerHTML=`<h4><div>${t.toFixed(0)}</div></h4>`;
+                    if(t <= 10 && t >= 0){
+                        var font = Timer.innerHTML;
+                        Timer.style.color = "red";
+                    }
+                    else if(t <= 0 && breaktime == false){
+                        Timer.style.color = "white";
+                        t = 30;
+                        breaktime = true;
+                    }
+                    else if(t <= 0 && breaktime == true){
+                        Timer.style.color = "white";
+                        t = sec;
+                        breaktime = false;
+                    }
+                }, 1000)
+            };
+            
+            timer();
+        </script>
+		
+	</body>
+</html>
