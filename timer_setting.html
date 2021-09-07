@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Your Profile</title>
+        <style type="text/css">
+            body{
+                background-color: black;
+                color: white;
+                margin:0 auto;
+            }
+            .clock{
+                text-align: right;
+                margin-right: 30px;
+            }
+            header{
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            section{text-align: center;}
+            .desc { color:#e8e8e8;}
+            .desc a {color:#515151;}
+            .dropdown {width:50px; margin-left: 600px;}
+            .dropdown dd, .dropdown dt, .dropdown ul { margin:0px; padding:0px; }
+            .dropdown dd { position:relative; }
+            .dropdown a, .dropdown a:visited { color:white; text-decoration:none; outline:none;}
+            .dropdown a:hover { color:#515151;}
+            .dropdown dt a:hover { color:white; border: 1px solid white;}
+            .dropdown dt a {background:black url('화살표이미지') no-repeat scroll right center; display:block; padding-right:20px;
+            border:1px solid white; width:50px;height:33px;}
+            .dropdown dt a span {cursor:pointer; display:block;line-height:29px;padding-left:20px;}
+            .dropdown dd ul { background:black none repeat scroll 0 0; border:1px solid white; color:#515151; display:none;
+            left:0px; padding:0px 0px; position:absolute; top:-1px; width:10px; min-width:70px; list-style:none; text-align:center;}
+            .dropdown span.value { display:none;}
+            .dropdown dd ul li a { padding:10px; display:block;padding-left:11px;}
+            .dropdown dd ul li a:hover { background-color:#e8e8e8;}
+            .dropdown img.flag { border:none; vertical-align:middle;padding:11px;}
+            .flagvisibility { display:none;}
+
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="timerSetting">
+              
+                <input type="button" value="이전 페이지로" 
+                style="background-color: black; color: white; border: 1px solid white; font-size: 20px; line-height: 1.3; border-radius: 5px;"
+                onclick="GoBack()">
+                <script type="text/javascript">
+                    function GoBack(){
+                        location.href = "practice.html"
+                    }
+                </script> 
+            </div>
+            <div class="clock">
+                <span id="h2" style="font-size: 10px;">2000년 00월 00일</span></h2><br>
+                <span id="h1" style="font-size: 50px;">00:00</span></h1>
+            </div>
+            <script src="clock2.js"></script>
+        </header>
+        <section>
+            운동시간을 설정해주세요
+            <div class="selectbox">
+                <dl class="dropdown">
+                    <dt><a href="#" style="padding-top:4px;"><span>0</span></a></dt>
+                    <dd>
+                        <ul class="dropdown2">
+                            <li><a href="#">30</a></li>
+                            <li><a href="#">60</a></li>
+                            <li><a href="#">90</a></li>
+                            <li><a href="#">120</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <script type="text/javascript">
+                $(".dropdown img.flag").addClass("flagvisibility");
+
+                $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+                });
+                    
+                $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                console.log(text);
+                localStorage.setItem('second', text); 
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                /* $("#result").html("Selected value is: " + getSelectedValue("sample"));*/
+                });
+                function getSelectedValue(id) {
+                    return $("#" + id).find("dt a span.value").html();
+                }
+                $(document).bind('click', function(e) {
+                    var $clicked = $(e.target);
+                    if (! $clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+                });
+
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            </script>
+             break time : 30 sec<br>
+            <input type="button" value="완료" 
+            style="background-color: black; margin-top: 15px; margin-left: -1px;
+             color: white; border: 1px solid white; font-size: 15px; line-height: 2; border-radius: 0px;"
+            onclick="prac_2_timer()">
+            <script type="text/javascript"> 
+                function prac_2_timer(){
+                    location.href = "timer.html";
+                }
+            </script>
+           
+        </section>
+    </body>
+</html>
