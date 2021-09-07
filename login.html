@@ -15,25 +15,47 @@
             .form{
                 border: 1px solid gray;
             }
+            .numKey{
+                background-color: black; color: white; border: 1px solid white; 
+                font-size: 15px; line-height: 1.3;
+                margin-bottom: 5px;
+            }
+            .numberKeypad{
+                margin-top: 5px;
+                margin-bottom: 10px;
+            }
+            .goback{
+                background-color: black; 
+                color: white; 
+                border: 1px solid white;
+                 font-size: 20px; 
+                 line-height: 1.3;
+                 border-radius: 5px;
+                 margin-bottom: 20px;
+                 margin-top: 10px;
+            }
         </style>
     </head>
     <body>
         <header class="header">
             <form>
-                PIN번호 입력<br>
-                <input type="text" value="" placeholder="번호를 입력해주세요" name="pinNum" id="number"><br>
-                <input type="button" value="1" onclick="NumberKeyDown(1)">
-                <input type="button" value="2" onclick="NumberKeyDown(2)">
-                <input type="button" value="3" onclick="NumberKeyDown(3)">
-                <input type="button" value="4" onclick="NumberKeyDown(4)">
-                <input type="button" value="5" onclick="NumberKeyDown(5)">
-                <input type="button" value="6" onclick="NumberKeyDown(6)">
-                <input type="button" value="7" onclick="NumberKeyDown(7)">
-                <input type="button" value="8" onclick="NumberKeyDown(8)">
-                <input type="button" value="9" onclick="NumberKeyDown(9)">
-                <input type="button" value="0" onclick="NumberKeyDown(0)">
-                <input type="button" value="back" onclick="BackKeyDown()">
-                <input type="button" value="Enter" onclick="EnterKeyDown()"><br>
+                <input type="button" value="이전 페이지로" class="goback" onclick="GoBack()">
+                <div class="numberKeypad">
+                    <input type="button" value="1" class="numKey" onclick="NumberKeyDown(1)">
+                    <input type="button" value="2" class="numKey" onclick="NumberKeyDown(2)">
+                    <input type="button" value="3" class="numKey" onclick="NumberKeyDown(3)">
+                    <input type="button" value="4" class="numKey" onclick="NumberKeyDown(4)">
+                    <input type="button" value="5" class="numKey" onclick="NumberKeyDown(5)">
+                    <input type="button" value="6" class="numKey" onclick="NumberKeyDown(6)">
+                    <input type="button" value="7" class="numKey" onclick="NumberKeyDown(7)">
+                    <input type="button" value="8" class="numKey" onclick="NumberKeyDown(8)">
+                    <input type="button" value="9" class="numKey" onclick="NumberKeyDown(9)">
+                    <input type="button" value="0" class="numKey" onclick="NumberKeyDown(0)">
+                    <input type="button" value="back" class="numKey" onclick="BackKeyDown()">
+                    <input type="button" value="Enter" class="numKey" onclick="EnterKeyDown()">
+                </div>
+                PIN번호 입력
+                <input type="text" value="" class="numKey" placeholder="번호를 입력해주세요" name="pinNum" id="number"><br>
                 <label id="text" style="font-size: small;">!회원이 아니시라면 회원가입을 진행해주세요</label>
             </form>
         </header>
@@ -69,6 +91,9 @@
             }
             function NumberKeyDown(num){
                 number.value = number.value+num;
+            }
+            function GoBack(){
+                location.href = "practice.html"
             }
         </script>
        
